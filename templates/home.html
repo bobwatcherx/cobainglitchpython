@@ -1,0 +1,79 @@
+{% extends 'layout.html' %}
+
+	{% block content %}
+	<form action="/search" method="get">
+		
+	<div class="container">
+  <div class="row">
+  		<div class="col-md-4">
+  			kota
+  			<br>
+				  <select class="custom-select" id="inputGroupSelect01" name="kota">
+    <option value="jakarta"selected>Jakarta</option>
+    <option value="bekasi">Bekasi</option>
+    <option value="surabaya">Surabaya</option>
+  </select>
+			</div>
+    <div class="col-sm">
+    	check in
+    	<br>
+    <div class="input-group date" data-provide="datepicker">
+    <input type="text" class="form-control" name="cekin">
+    <div class="input-group-addon">
+        <span class="glyphicon glyphicon-th"></span>
+    </div>
+</div>
+    </div>
+    <div class="col-sm">
+       <div class="col-sm">
+    	check out
+    	<br>
+    <div class="input-group date" data-provide="datepicker">
+    <input type="text" class="form-control" name="cekout">
+    <div class="input-group-addon">
+        <span class="glyphicon glyphicon-th"></span>
+    </div>
+</div>
+    </div>
+    </div>
+      <div class="col-sm">
+       <div class="col-sm">
+  Type
+  <br>
+      <select class="custom-select" name="type">
+  <option >Pilih Type</option>
+  <option value="premium"selected>Premium</option>
+  <option value="lux">lux</option>
+  <option value="superlux">Super Lux</option>
+</select>
+    </div>
+    </div>
+    <div class="col-sm">
+    	<br>
+    	<button type="submit" class="btn btn-primary">Check Availability</button>
+    </div>
+  </div>
+</div>
+	</form>
+
+	<h1>home</h1>
+	<br>
+	 {% for p in mydata %}
+	 {{p.nama}}
+	 {% for x in p.galery %}
+	 <ul>
+	 	<li>
+	 <img src="{{x}}" alt="">
+	 		
+	 	</li>
+	 </ul>
+	 <script>
+	 	$('.datepicker').datepicker({
+    format: 'mm/dd/yyyy',
+    startDate: '-3d'
+});
+
+	 </script>
+        {% endfor %}
+        {% endfor %}
+      {% endblock %}

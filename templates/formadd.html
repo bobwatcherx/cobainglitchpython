@@ -1,0 +1,10 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+	<form action="/post" method="POST">
+		nama <input type="text" name="nama">
+		hotel <input type="text" name="hotel">
+		harga <input type="text" name="harga">
+		<input type="submit" value="send">
+	</form>
+{% endblock %}

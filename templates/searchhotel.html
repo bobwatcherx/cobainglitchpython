@@ -1,0 +1,66 @@
+{% include 'navigasipesan.html'%}
+
+ <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<style>
+  .result:hover{
+    box-shadow: 0px 0px 30px rgba(0,0,0,0.3)
+  }
+</style>
+<nav class="navbar  justify-content-between" style="background-color:orange;  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  background-color: orange;
+  padding: 10px;
+  font-size: 20px;">
+  <a class="navbar-brand" style="color:white">Pencarian hotel di " {{kota}} "</a>
+</nav>
+<br>
+<div style="margin:30px;">
+<div id="app">
+  <div class="row">
+ {% for p in dataresult %}
+    <div class="col-md-4">
+<ul class="list-group result"  style="border-top:4px solid red" >
+  <li class="list-group-item">
+    <img src="{{p.foto}}" alt="">
+    <br>
+    <span style="background-color: orange;color:white;padding:2px;border-radius: 10px;">{{p.type}}</span>
+  </li>
+  <li class="list-group-item" style="font-size: 25px;">{{p.nama}} - Rp. {{p.harga}} /mlm</li>
+  <li class="list-group-item"> {{p.lokasi}} , {{p.propinsi}} </li>
+  <li class="list-group-item" style="color:grey"> tersisa {{p.available}} kamar / {{p.kasur}} Tempat Tidur  </li>
+  <li class="list-group-item">
+   <button type="submit" class="btn btn-warning" v-on:click="book(p)">Booking</button>
+  </li>
+</ul>
+  </div>
+        {% endfor %}
+  <div class="col-md-3 " style="position: fixed;z-index: 10;right:1;box-shadow: 0px 0px 20px rgba(0,0,0,0.5);padding:10px;">
+    <h3 sttle="background-color:orange;color:white">Filter Hotels</h3>
+      <form action="/search" method="get">
+        kota
+      <select class="custom-select" name="kota">
+  <option selected>Ganti Kota</option>
+  <option value="bekasi">Bekasi</option>
+  <option value="jakarta">jakarta</option>
+  <option value="bandung">Bandung</option>
+</select>
+<br>
+<hr>
+Type
+      <select class="custom-select" name="type">
+  <option >Pilih Type</option>
+  <option value="premium"selected>Premium</option>
+  <option value="lux">lux</option>
+  <option value="superlux">Super Lux</option>
+</select>
+<br>
+<br>
+<button type="submit" class="btn btn-success">Perbarui</button>
+      </form>
+  </div>
+</div>
+</div>
+
+
+</div>

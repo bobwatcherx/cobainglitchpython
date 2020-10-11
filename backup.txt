@@ -1,0 +1,15 @@
+if request.method == "POST" and  updatedata:
+		try:
+			req = mongo.db.datacustbook.insert({
+			"nama":nama,
+			"jumlahorang":totalguest,
+			"hotel":hotel,
+			"harga":harga,
+			"kodebook": kodebook ,
+			"dateorder":datenow
+			})
+		except Exception as e:
+			return "error adanya"
+
+
+			
