@@ -80,6 +80,11 @@ def newPost():
 			"cekout":cekout,
 			"email":email
 			})
+			msg = Message("18 TI D6 booking App ",sender="bobwatcherx@gmail.com",
+  recipients=[email])
+			msg.body = "kode boking anda telah ada"
+			msg.html = render_template('/success.html', kodebook=kodebook, email=email,nama=nama)
+			mail.send(msg)
 			return jsonify({"kodebook":kodebook})
 		except Exception as e:
 			return  jsonify({"error":"error"})
