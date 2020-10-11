@@ -84,8 +84,9 @@ def newPost():
 			msg.body = "Transaksi anda telah berhasil"
 			msg.html = render_template("success.html",email=email,nama=nama,kodebook=kodebook)
 			mail.send(msg)
+			return jsonify({"kodebook":kodebook})
 		except Exception as e:
-			return  e
+			return  jsonify({"error":"error"})
 
 
 	return jsonify({
