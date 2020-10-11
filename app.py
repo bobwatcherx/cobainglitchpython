@@ -85,7 +85,7 @@ def newPost():
 			msg.html = render_template("success.html",email=email,nama=nama,kodebook=kodebook)
 			mail.send(msg)
 		except Exception as e:
-			return "error adanya"
+			return "error adanya" + e
 
 
 	return jsonify({
